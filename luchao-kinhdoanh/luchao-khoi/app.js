@@ -628,7 +628,7 @@ function renderCaptureHTML(data) {
                 <div class="info-line"><strong>Nhật Thần:</strong> <span class="highlight">${dateInfo.nhatThan}</span> &nbsp;&nbsp;&nbsp;&nbsp; <strong>Nguyệt Lệnh:</strong> <span class="highlight">${dateInfo.nguyetLenh}</span></div>
             </div>
             <div class="info-icon">
-                <img src="khoi.png" alt="Dấu ấn">
+                <img src="khoi1.png" alt="Dấu ấn">
             </div>
         </div>
         
