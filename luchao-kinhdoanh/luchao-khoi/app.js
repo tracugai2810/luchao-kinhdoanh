@@ -627,11 +627,8 @@ function renderCaptureHTML(data) {
                 <div class="info-line"><strong>Tiết khí:</strong> ${dateInfo.tietKhi} &nbsp;&nbsp;&nbsp;&nbsp; <strong>Tuần Không:</strong> <span class="highlight">${dateInfo.tuanKhong}</span></div>
                 <div class="info-line"><strong>Nhật Thần:</strong> <span class="highlight">${dateInfo.nhatThan}</span> &nbsp;&nbsp;&nbsp;&nbsp; <strong>Nguyệt Lệnh:</strong> <span class="highlight">${dateInfo.nguyetLenh}</span></div>
             </div>
-            <div style="display: flex; flex-wrap: wrap; width: 110px; height: 110px; border: 4px double #c41e3a; color: #c41e3a; font-family: 'Charm', cursive, serif; font-size: 24px; font-weight: 700; border-radius: 2px; opacity: 1; margin-left: auto; padding: 2px; box-sizing: border-box; background: rgba(196, 30, 58, 0.01); line-height: 1; text-shadow: 0.6px 0px 0px #c41e3a, -0.6px 0px 0px #c41e3a, 0px 0.6px 0px #c41e3a, 0px -0.6px 0px #c41e3a;">
-                <div style="width: 50%; height: 50%; display: flex; align-items: center; justify-content: center; border-right: 1px dashed rgba(196, 30, 58, 0.2); border-bottom: 1px dashed rgba(196, 30, 58, 0.2); box-sizing: border-box; padding: 2px; letter-spacing: -0.5px;">ĐẠI</div>
-                <div style="width: 50%; height: 50%; display: flex; align-items: center; justify-content: center; border-bottom: 1px dashed rgba(196, 30, 58, 0.2); box-sizing: border-box; padding: 2px; letter-spacing: -0.5px;">ĐẠO</div>
-                <div style="width: 50%; height: 50%; display: flex; align-items: center; justify-content: center; border-right: 1px dashed rgba(196, 30, 58, 0.2); box-sizing: border-box; padding: 2px; letter-spacing: -0.5px;">CHÍ</div>
-                <div style="width: 50%; height: 50%; display: flex; align-items: center; justify-content: center; box-sizing: border-box; padding: 2px 8px 2px 0px; letter-spacing: -1.2px; font-size: 22px;">GIẢN</div>
+            <div class="info-icon">
+                <img src="khoi.png" alt="Dấu ấn">
             </div>
         </div>
         

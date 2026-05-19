@@ -532,7 +532,7 @@ body {
     border-bottom: 2px solid #888;
     padding: 5px 10px;
     margin-bottom: 10px;
-    min-height: 110px;
+    min-height: 125px;
 }
 
 #captureTarget .info-content {
@@ -555,8 +555,8 @@ body {
 }
 
 #captureTarget .info-icon {
-    width: 110px;
-    height: 110px;
+    height: 125px;
+    width: auto;
     margin-left: 0;
     margin-right: -10px;
     flex-shrink: 0;
@@ -566,9 +566,8 @@ body {
 }
 
 #captureTarget .info-icon img {
-    width: 100%;
     height: 100%;
-    object-fit: contain;
+    width: auto;
     opacity: 0.9;
 }
 
