@@ -624,7 +624,7 @@ function renderCaptureHTML(data) {
             <div class="info-content">
                 <div class="info-line"><strong>Ngày giờ:</strong> ${data.formattedDate} &nbsp;&nbsp;&nbsp;&nbsp; <strong>Phương pháp:</strong> ${methodText}</div>
                 <div class="info-line"><strong>Can chi:</strong> ${dateInfo.fullCanChi}</div>
-                <div class="info-line"><strong>Tiết khí:</strong> ${dateInfo.tietKhi} &nbsp;&nbsp;&nbsp;&nbsp; <strong>Tuần Không:</strong> <span class="highlight">${dateInfo.tuanKhong}</span></div>
+                <div class="info-line"><strong>Hào tâm:</strong> <span class="highlight">${dateInfo.haoTam}</span> &nbsp;&nbsp;&nbsp;&nbsp; <strong>Tuần Không:</strong> <span class="highlight">${dateInfo.tuanKhong}</span></div>
                 <div class="info-line"><strong>Nhật Thần:</strong> <span class="highlight">${dateInfo.nhatThan}</span> &nbsp;&nbsp;&nbsp;&nbsp; <strong>Nguyệt Lệnh:</strong> <span class="highlight">${dateInfo.nguyetLenh}</span></div>
             </div>
 
@@ -914,6 +914,49 @@ function calculateHexagramData(lines, cal, methodText, formattedDate, isMaiHoa) 
 
     const shensha = calculateShenSha(cal.ngay.can, cal.ngay.chi, cal.thang.chi);
 
+    // Hào Tâm Niệm Logic
+    const shiIdx = linesData.findIndex(l => l.isShi);
+    const haoThe = linesData[shiIdx];
+    const hao5 = linesData[4];
+
+    const getTangHao = (idx) => {
+        const pureTri = QUAI_SO[info.p].name;
+        const pureBranch = NAP_GIAP[pureTri][idx];
+        const pureEl = NGU_HANH_CHI[pureBranch];
+        const pureRel = getRelation(pureEl, palaceEl);
+        return {
+            rel: pureRel,
+            branch: pureBranch
+        };
+    };
+
+    let haoTam = null;
+
+    if (!haoThe.isMoving && haoThe.changed.relation !== haoThe.relation) {
+        haoTam = { rel: haoThe.changed.relation, branch: haoThe.changed.branch };
+    } else {
+        const tangHaoThe = getTangHao(shiIdx);
+        if (tangHaoThe.rel !== haoThe.relation) {
+            haoTam = tangHaoThe;
+        } else {
+            if (hao5.relation === haoThe.relation || hao5.isMoving) {
+                haoTam = getTangHao(4);
+            } else {
+                haoTam = { rel: hao5.relation, branch: hao5.chi };
+            }
+        }
+    }
+
+    function getShortRel(rel) {
+        if (rel.startsWith('Tử Tôn')) return 'Tử';
+        if (rel.startsWith('Thê Tài')) return 'Tài';
+        if (rel.startsWith('Phụ Mẫu')) return 'Phụ';
+        if (rel.startsWith('Huynh Đệ')) return 'Huynh';
+        if (rel.startsWith('Quan Quỷ')) return 'Quan';
+        return rel.split(' ')[0];
+    }
+    const haoTamStr = `${getShortRel(haoTam.rel)} - ${haoTam.branch}`;
+
     return {
         mainName,
         changedName,
@@ -934,6 +977,7 @@ function calculateHexagramData(lines, cal, methodText, formattedDate, isMaiHoa) 
         dateInfo: {
             fullCanChi: `Giờ ${cal.gio.can} ${cal.gio.chi}, Ngày ${cal.ngay.can} ${cal.ngay.chi}`,
             tietKhi: cal.tietKhi,
+            haoTam: haoTamStr,
             tuanKhong: cal.tuanKhong.join(', '),
             nhatThan: `${cal.ngay.chi} - ${cal.ngay.hanh}`,
             nguyetLenh: `${cal.thang.chi} - ${cal.thang.hanh}`,
