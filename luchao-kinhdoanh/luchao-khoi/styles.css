@@ -68,7 +68,7 @@
 }
 
 html {
-    font-size: 16px;
+    font-size: 17px;
     -webkit-text-size-adjust: 100%;
 }
 
@@ -532,7 +532,7 @@ body {
     border-bottom: 2px solid #888;
     padding: 5px 10px;
     margin-bottom: 10px;
-    min-height: 125px;
+    min-height: 145px;
 }
 
 #captureTarget .info-content {
@@ -555,7 +555,7 @@ body {
 }
 
 #captureTarget .info-icon {
-    height: 125px;
+    height: 145px;
     width: auto;
     margin-left: 0;
     margin-right: -10px;
@@ -948,7 +948,7 @@ body {
 /* Mobile Specific */
 @media (max-width: 767px) {
     html {
-        font-size: 14px;
+        font-size: 15px;
     }
 
     .app-container {
@@ -1055,7 +1055,7 @@ body {
 /* Extra small screens */
 @media (max-width: 360px) {
     html {
-        font-size: 14px;
+        font-size: 15px;
     }
 
     .tab-text {
